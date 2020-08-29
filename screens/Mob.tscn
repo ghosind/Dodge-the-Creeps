@@ -8,12 +8,11 @@
 [ext_resource path="res://assets/art/enemySwimming_1.png" type="Texture" id=6]
 [ext_resource path="res://scripts/Mob.gd" type="Script" id=7]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "fly",
+"name": "swim",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
@@ -21,9 +20,9 @@ animations = [ {
 "name": "walk",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "swim",
+"name": "fly",
 "speed": 5.0
 } ]
 
