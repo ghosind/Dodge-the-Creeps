@@ -11,5 +11,9 @@ data_*/
 # Output
 dist/
 
+# Android
+android/
+key/
+
 # Misc
 .DS_Store

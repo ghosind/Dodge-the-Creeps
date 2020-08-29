@@ -24,6 +24,12 @@ func update_score(score):
 func update_highest_score(score):
 	$HighestScoreLabel.text = "Highest Score: " + str(score)
 
+func update_heart(heart):
+	$HeartLabel.text = ""
+	
+	for _i in range(heart):
+		$HeartLabel.text += "♥︎"
+
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	emit_signal("start_game")

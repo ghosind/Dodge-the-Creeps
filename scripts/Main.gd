@@ -31,6 +31,7 @@ func new_game():
 	
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
+	$HUD.update_heart($Player.heart)
 	
 	$Music.play()
 
@@ -57,6 +58,10 @@ func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
 
-
 func _on_HUD_start_game():
 	new_game()
+
+func _on_Player_hit():
+	$HUD.update_heart($Player.heart)
+	if $Player.heart == 0:
+		game_over()
