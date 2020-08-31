@@ -19,7 +19,7 @@ Mob = ExtResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.5
 
 [node name="ScoreTimer" type="Timer" parent="."]
 

@@ -1,6 +1,11 @@
 extends Node
 
 export (PackedScene) var Mob
+
+const MAX_TIME = 1.5
+const MIN_TIME = 0.5
+
+var level
 var highest
 var score
 
@@ -26,6 +31,9 @@ func game_over():
 
 func new_game():
 	score = 0
+	level = 1
+	$MobTimer.wait_time = MAX_TIME
+	
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	
@@ -51,6 +59,11 @@ func _on_MobTimer_timeout():
 
 func _on_ScoreTimer_timeout():
 	score += 1
+	
+	if score % 10 == 0:
+		level = score / 10 + 1
+		var timeout = MIN_TIME + (MAX_TIME - MIN_TIME) * (1.0 / level)
+		$MobTimer.wait_time = timeout
 	
 	$HUD.update_score(score)
 

@@ -1,4 +1,4 @@
-# Dodge-the-Creeps
+# Dodge the Creeps!
 
 Godot game engine learning project.
 
