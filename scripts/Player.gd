@@ -49,7 +49,8 @@ func _process(delta):
 		$AnimatedSprite.animation = "up"
 		$AnimatedSprite.flip_v = velocity.y > 0
 
-func _on_Player_body_entered(_body):
+func _on_Player_body_entered(body):
+	body.queue_free()
 	heart -= 1
 	
 	if heart == 0:
