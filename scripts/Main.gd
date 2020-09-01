@@ -5,14 +5,36 @@ export (PackedScene) var Mob
 const MAX_TIME = 1.5
 const MIN_TIME = 0.5
 
+const SAVE_FILE_NAME = "user://save_game.dat"
+
 var level
-var highest
+var highest = 0
 var score
 
 func _ready():
 	randomize()
 	
-	highest = 0
+	load_game()
+	
+	$HUD.update_highest_score(highest)
+
+func save_game():
+	var game_file = File.new()
+	game_file.open(SAVE_FILE_NAME, File.WRITE)
+	print_debug(game_file)
+	game_file.store_32(highest)
+	game_file.close()
+
+func load_game():
+	var game_file = File.new()
+	if not game_file.file_exists(SAVE_FILE_NAME):
+		return
+	
+	game_file.open(SAVE_FILE_NAME, File.READ)
+	highest = game_file.get_32()
+	print_debug("game_file: ", game_file)
+	print_debug("highest: ", highest)
+	game_file.close()
 
 func game_over():
 	$ScoreTimer.stop()
@@ -23,6 +45,7 @@ func game_over():
 	if score > highest:
 		highest = score
 		$HUD.update_highest_score(highest)
+		save_game()
 	
 	get_tree().call_group("mobs", "queue_free")
 	
